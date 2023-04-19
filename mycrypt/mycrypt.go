@@ -1,5 +1,7 @@
 package mycrypt
 
+import "unicode"
+
 var ALF_SEM03 []rune = []rune("abcdefghijklmnopqrstuvwxyzæøå0123456789.,:; ")
 
 func Krypter(melding []rune, alphabet []rune, chiffer int) []rune {
@@ -17,9 +19,8 @@ func Krypter(melding []rune, alphabet []rune, chiffer int) []rune {
 
 func sokIAlfabetet(symbol rune, alfabet []rune) int {
 	for i := 0; i < len(alfabet); i++ {
-		if symbol == alfabet[i] {
+		if unicode.ToLower(symbol) == unicode.ToLower(alfabet[i]) {
 			return i
-			break
 		}
 	}
 	return -1
